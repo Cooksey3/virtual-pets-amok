@@ -1,4 +1,4 @@
-package virtualpetshelter;
+package virtualpetsamok;
 
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
@@ -12,6 +12,9 @@ import java.util.Collection;
 import org.junit.Before;
 import org.junit.Test;
 
+import virtualpetsamok.VirtualPet;
+import virtualpetsamok.VirtualPetShelter;
+
 public class VirtualPetShelterTest {
 
 	private static final String PET_NAME = "Bilbo";
@@ -24,7 +27,7 @@ public class VirtualPetShelterTest {
 	public void setup() {
 		underTest = new VirtualPetShelter();
 
-		newPet = new VirtualPet(PET_NAME, "", 0, 0, 0);
+		newPet = new VirtualPet(PET_NAME, "", 0, 0, 0, 0);
 
 	}
 
@@ -38,7 +41,7 @@ public class VirtualPetShelterTest {
 	@Test
 	public void shouldAddMultiplPetsToShelter() {
 		String anotherPetName = "Chad";
-		VirtualPet newPet2 = new VirtualPet(anotherPetName, PET_DESCRIPTION, 0, 0, 0);
+		VirtualPet newPet2 = new VirtualPet(anotherPetName, PET_DESCRIPTION, 0, 0, 0, 0);
 
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
@@ -58,7 +61,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldFeedAllPets() {
-		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0);
+		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0, 0);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.feedAllPets();
@@ -69,7 +72,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldWaterAllPets() {
-		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0);
+		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0, 0);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.waterAllPets();
@@ -80,7 +83,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldPlayWithAllPets() {
-		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0);
+		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0, 0);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.playWithAllPets();
@@ -91,7 +94,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldPlayWithOnePet() {
-		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0);
+		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0, 0);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.playWithOnePet(PET_NAME);
@@ -103,7 +106,7 @@ public class VirtualPetShelterTest {
 	@Test
 	public void shouldTickAllPets() {
 		underTest.admitPet(newPet);
-		VirtualPet newPet2 = new VirtualPet("Chad", "", 0, 0, 0);
+		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0, 0);
 		underTest.admitPet(newPet2);
 		underTest.tickAllPets();
 		assertThat(newPet.getBoredom(), is(1));
