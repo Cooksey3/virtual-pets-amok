@@ -12,9 +12,9 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 
 public class RobotDogTest {
-	
+
 	RobotDog underTest = new RobotDog("Bilbo", "is a dog", 0, 0, 0, 0);
-	
+
 	@Test
 	public void walkDogShouldDecreaseBoredomLevel() {
 		int boredomLevelBefore = underTest.getBoredom();
@@ -22,11 +22,19 @@ public class RobotDogTest {
 		int boredomLevelAfter = underTest.getBoredom();
 		assertThat(boredomLevelBefore - boredomLevelAfter, is(1));
 	}
-	
+
 	@Test
-	public void oilPetShouldDecreaseHungerLevel() {
-		int hungerLevelBefore = underTest.getHunger();
+	public void oilPetShouldDecreaseThirstLevel() {
+		int thirstLevelBefore = underTest.getThirst();
 		underTest.oilPet();
+		int thirstLevelAfter = underTest.getThirst();
+		assertThat(thirstLevelBefore - thirstLevelAfter, is(1));
+	}
+
+	@Test
+	public void chargeShouldDecreaseHungerLevel() {
+		int hungerLevelBefore = underTest.getHunger();
+		underTest.chargePet();
 		int hungerLevelAfter = underTest.getHunger();
 		assertThat(hungerLevelBefore - hungerLevelAfter, is(1));
 	}
