@@ -27,7 +27,7 @@ public class VirtualPetShelterTest {
 	public void setup() {
 		underTest = new VirtualPetShelter();
 
-		newPet = new VirtualPet(PET_NAME, "", 0, 0, 0, 0);
+		OrganicDog newPet = new OrganicDog(PET_NAME, "", 0, 0, 0, 0);
 
 	}
 
@@ -41,7 +41,7 @@ public class VirtualPetShelterTest {
 	@Test
 	public void shouldAddMultiplPetsToShelter() {
 		String anotherPetName = "Chad";
-		VirtualPet newPet2 = new VirtualPet(anotherPetName, PET_DESCRIPTION, 0, 0, 0, 0);
+		OrganicDog newPet2 = new OrganicDog(anotherPetName, "", 0, 0, 0, 0);
 
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
@@ -61,7 +61,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldFeedAllPets() {
-		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0, 0);
+		OrganicDog newPet2 = new OrganicDog("Chad", "", 0, 0, 0, 0);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.feedAllPets();
@@ -72,7 +72,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldWaterAllPets() {
-		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0, 0);
+		OrganicDog newPet2 = new OrganicDog("Chad", "", 0, 0, 0, 0);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.waterAllPets();
@@ -83,7 +83,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldPlayWithAllPets() {
-		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0, 0);
+		OrganicDog newPet2 = new OrganicDog("Chad", "", 0, 0, 0, 0);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.playWithAllPets();
@@ -94,7 +94,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldPlayWithOnePet() {
-		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0, 0);
+		OrganicDog newPet2 = new OrganicDog("Chad", "", 0, 0, 0, 0);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.playWithOnePet(PET_NAME);
@@ -106,7 +106,7 @@ public class VirtualPetShelterTest {
 	@Test
 	public void shouldTickAllPets() {
 		underTest.admitPet(newPet);
-		VirtualPet newPet2 = new VirtualPet("Chad", PET_DESCRIPTION, 0, 0, 0, 0);
+		OrganicDog newPet2 = new OrganicDog("Chad", "", 0, 0, 0, 0);
 		underTest.admitPet(newPet2);
 		underTest.tickAllPets();
 		assertThat(newPet.getBoredom(), is(1));

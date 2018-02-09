@@ -14,7 +14,5 @@ public class RobotDog extends Dog {
 	public void chargePet() {
 		hungerLevel -= 1;
 	}
-	
-	
 
 }

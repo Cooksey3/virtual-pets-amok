@@ -30,14 +30,6 @@ public abstract class VirtualPet {
 		return petDescription;
 	}
 
-	public void feedPet() {
-		hungerLevel -= 1;
-	}
-
-	public void waterPet() {
-		thirstLevel -= 1;
-	}
-
 	public void playWithPet() {
 		boredomLevel -= 1;
 	}
