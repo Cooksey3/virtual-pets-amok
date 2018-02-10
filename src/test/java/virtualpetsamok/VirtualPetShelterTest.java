@@ -21,13 +21,13 @@ public class VirtualPetShelterTest {
 	private static final String PET_DESCRIPTION = "is doing well";
 
 	private VirtualPetShelter underTest;
-	private VirtualPet newPet;
+	private Cat newPet;
 
 	@Before
 	public void setup() {
 		underTest = new VirtualPetShelter();
 
-		OrganicDog newPet = new OrganicDog(PET_NAME, "", 0, 0, 0, 0);
+		newPet = new Cat(PET_NAME, "", 0, 0, 0, 0, "is happy");
 
 	}
 
@@ -37,11 +37,11 @@ public class VirtualPetShelterTest {
 		VirtualPet findPet = underTest.findPet(PET_NAME);
 		assertThat(findPet, is(newPet));
 	}
-
+	
 	@Test
 	public void shouldAddMultiplPetsToShelter() {
 		String anotherPetName = "Chad";
-		OrganicDog newPet2 = new OrganicDog(anotherPetName, "", 0, 0, 0, 0);
+		Dog newPet2 = new Dog(anotherPetName, "", 0, 0, 0, 0, "is unhappy");
 
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
@@ -61,18 +61,23 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldFeedAllPets() {
-		OrganicDog newPet2 = new OrganicDog("Chad", "", 0, 0, 0, 0);
+		Dog newPet2 = new Dog("Chad", "", 0, 0, 0, 0, "is hungry");
+		RobotDog newPet3 = new RobotDog("Jimmy", "", 0, 0, 0, "is hungry");
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
-		underTest.feedAllPets();
+		underTest.admitPet(newPet2);
+		underTest.feedAllOrganicPets();
 
+		
 		assertThat(newPet.getHunger(), is(-1));
 		assertThat(newPet2.getHunger(), is(-1));
+		assertThat(newPet3.getOil(), is(0));
+		
 	}
 
 	@Test
-	public void shouldWaterAllPets() {
-		OrganicDog newPet2 = new OrganicDog("Chad", "", 0, 0, 0, 0);
+	public void shouldWaterAllOrganicPets() {
+		Dog newPet2 = new Dog("Chad", "", 0, 0, 0, 0, null);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.waterAllPets();
@@ -83,7 +88,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldPlayWithAllPets() {
-		OrganicDog newPet2 = new OrganicDog("Chad", "", 0, 0, 0, 0);
+		RobotDog newPet2 = new RobotDog("Chad", "", 0, 0, 0, "");
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.playWithAllPets();
@@ -94,7 +99,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldPlayWithOnePet() {
-		OrganicDog newPet2 = new OrganicDog("Chad", "", 0, 0, 0, 0);
+		RobotDog newPet2 = new RobotDog("Chad", "", 0, 0, 0, "");
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.playWithOnePet(PET_NAME);
@@ -106,10 +111,10 @@ public class VirtualPetShelterTest {
 	@Test
 	public void shouldTickAllPets() {
 		underTest.admitPet(newPet);
-		OrganicDog newPet2 = new OrganicDog("Chad", "", 0, 0, 0, 0);
+		RobotDog newPet2 = new RobotDog("Chad", "", 0, 0, 0, "");
 		underTest.admitPet(newPet2);
 		underTest.tickAllPets();
 		assertThat(newPet.getBoredom(), is(1));
-		assertThat(newPet2.getHunger(), is(1));
+		assertThat(newPet2.getOil(), is(1));
 	}
 }

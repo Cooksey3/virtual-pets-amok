@@ -27,4 +27,10 @@ public abstract class Robot extends VirtualPet {
 		healthLevel = boredomLevel + oilLevel;
 		return healthLevel;
 	}
+	
+	@Override
+	public void tick() {
+		oilLevel += 1;
+		boredomLevel += 1;
+	}
 }

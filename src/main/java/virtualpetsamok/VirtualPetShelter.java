@@ -8,6 +8,10 @@ public class VirtualPetShelter {
 
 	private Map<String, VirtualPet> shelter = new HashMap<>();
 
+	public Collection<VirtualPet> petList() {
+		return shelter.values();
+	}
+
 	public void admitPet(VirtualPet newPet) {
 		shelter.put(newPet.getName(), newPet);
 	}
@@ -16,23 +20,23 @@ public class VirtualPetShelter {
 		return shelter.get(petName);
 	}
 
-	public Collection<VirtualPet> petList() {
-		return shelter.values();
-	}
-
 	public void adoptPet(String petName) {
 		shelter.remove(petName);
 	}
 
-	public void feedAllPets() {
+	public void feedAllOrganicPets() {
 		for (VirtualPet pets : shelter.values()) {
-			pets.feedPet();
+			if (pets instanceof Organic) {
+				((Organic) pets).feedPet();
+			}
 		}
 	}
 
 	public void waterAllPets() {
 		for (VirtualPet pets : shelter.values()) {
-			pets.waterPet();
+			if (pets instanceof Organic) {
+				((Organic) pets).waterPet();
+			}
 		}
 	}
 

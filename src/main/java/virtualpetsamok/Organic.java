@@ -53,4 +53,11 @@ public abstract class Organic extends VirtualPet {
 	public String getDescription() {
 		return petDescription;
 	}
+
+	@Override
+	public void tick() {
+		boredomLevel += 1;
+		thirstLevel += 1;
+		hungerLevel += 1;
+	}
 }

@@ -6,4 +6,8 @@ public class Cat extends Organic {
 			int healthLevel, String happinessLevel) {
 		super(petName, petDescription, hungerLevel, boredomLevel, thirstLevel, healthLevel, happinessLevel);
 	}
+	
+	public Cat(String petName, String petDescription) {
+		super(petName, petDescription);
+	}
 }
