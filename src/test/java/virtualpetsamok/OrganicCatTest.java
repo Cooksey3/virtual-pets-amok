@@ -43,7 +43,7 @@ public class OrganicCatTest {
 		underTest.feedPet();
 		underTest.waterPet();
 		int healthLevelAfter = underTest.getHealthLevel();
-		assertThat(healthLevelBefore - healthLevelAfter, is(2));
+		assertThat(healthLevelBefore - healthLevelAfter, is(-2));
 	}
 
 	@Test

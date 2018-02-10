@@ -2,9 +2,14 @@ package virtualpetsamok;
 
 public abstract class Organic extends VirtualPet {
 
+	protected int hungerLevel;
+	protected int thirstLevel;
+
 	public Organic(String petName, String petDescription, int hungerLevel, int boredomLevel, int thirstLevel,
 			int healthLevel, String happinessLevel) {
-		super(petName, petDescription, hungerLevel, boredomLevel, thirstLevel, healthLevel, happinessLevel);
+		super(petName, petDescription, boredomLevel, healthLevel, happinessLevel);
+		this.hungerLevel = hungerLevel;
+		this.thirstLevel = thirstLevel;
 	}
 
 	public Organic(String petName, String petDescription) {
@@ -35,8 +40,9 @@ public abstract class Organic extends VirtualPet {
 		boredomLevel -= 1;
 	}
 
+	@Override
 	public int getHealthLevel() {
-		healthLevel = boredomLevel + thirstLevel + hungerLevel;
+		healthLevel -= (boredomLevel + thirstLevel + hungerLevel);
 		return healthLevel;
 	}
 
