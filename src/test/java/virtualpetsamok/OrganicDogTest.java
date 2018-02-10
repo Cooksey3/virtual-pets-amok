@@ -7,15 +7,11 @@ import org.junit.Test;
 
 public class OrganicDogTest {
 
-	OrganicDog underTest = new OrganicDog("Bilbo", "is a dog", 0, 0, 0, 0);
+	private static final String PET_NAME = "Bilbo";
+	private static final String PET_DESCRIPTION = "is a dog";
+	private static final String PET_HAPPINESS = "Very happy.";
 
-	@Test
-	public void walkDogShouldDecreaseBoredomLevel() {
-		int boredomLevelBefore = underTest.getBoredom();
-		underTest.walkDog();
-		int boredomLevelAfter = underTest.getBoredom();
-		assertThat(boredomLevelBefore - boredomLevelAfter, is(1));
-	}
+	Organic underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 0, PET_HAPPINESS);
 
 	@Test
 	public void feedPetShouldDecreaseHungerLevel() {
@@ -25,4 +21,53 @@ public class OrganicDogTest {
 		assertThat(hungerLevelBefore - hungerLevelAfter, is(1));
 	}
 
+	@Test
+	public void waterPetShouldDecreaseThirstLevel() {
+		int thirstLevelBefore = underTest.getThirst();
+		underTest.waterPet();
+		int thirstLevelAfter = underTest.getThirst();
+		assertThat(thirstLevelBefore - thirstLevelAfter, is(1));
+	}
+
+	@Test
+	public void playWithPetShouldDecreaseBoredomLevel() {
+		int boredomLevelBefore = underTest.getBoredom();
+		underTest.playWithPet();
+		int boredomLevelAfter = underTest.getBoredom();
+		assertThat(boredomLevelBefore - boredomLevelAfter, is(1));
+	}
+
+	@Test
+	public void healthLevelShouldEqualSumOfOtherLevels() {
+		int healthLevelBefore = underTest.getHealthLevel();
+		underTest.feedPet();
+		underTest.waterPet();
+		int healthLevelAfter = underTest.getHealthLevel();
+		assertThat(healthLevelBefore - healthLevelAfter, is(2));
+	}
+
+	@Test
+	public void shouldGetPetName() {
+		String name = underTest.getName();
+		assertThat(name, is("Bilbo"));
+	}
+
+	@Test
+	public void shouldGetPetDescription() {
+		String description = underTest.petDescription();
+		assertThat(description, is(PET_DESCRIPTION));
+	}
+
+	@Test
+	public void happinessLevelChangeWithOtherLevels() {
+		String happinessLevel = underTest.getHappinessLevel();
+		assertThat(happinessLevel, is(PET_HAPPINESS));
+	}
+
+	@Test
+	public void happinessLevelChangeWithOtherLevelsBad() {
+		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS);
+		String happinessLevel = underTest.getHappinessLevel();
+		assertThat(happinessLevel, is("Very unhappy."));
+	}
 }

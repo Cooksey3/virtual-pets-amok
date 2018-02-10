@@ -1,12 +1,10 @@
 package virtualpetsamok;
 
-public abstract class Dog extends VirtualPet {
+public class Dog extends Organic {
 
-	public Dog(String petName, String petDescription, int hungerLevel, int boredomLevel, int thirstLevel, int healthLevel) {
+	public Dog(String petName, String petDescription, int hungerLevel, int boredomLevel, int thirstLevel,
+			int healthLevel, String happinessLevel) {
+		super(petName, petDescription, hungerLevel, boredomLevel, thirstLevel, healthLevel, happinessLevel);
 	}
-	
-	public void walkDog() {
-		boredomLevel -= 1;
-	}
-	
+
 }
