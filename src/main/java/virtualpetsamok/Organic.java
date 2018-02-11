@@ -4,12 +4,14 @@ public abstract class Organic extends VirtualPet {
 
 	protected int hungerLevel;
 	protected int thirstLevel;
+	protected int pottyLevel;
 
 	public Organic(String petName, String petDescription, int hungerLevel, int boredomLevel, int thirstLevel,
-			int healthLevel, String happinessLevel) {
+			int healthLevel, String happinessLevel, int pottyLevel) {
 		super(petName, petDescription, boredomLevel, healthLevel, happinessLevel);
 		this.hungerLevel = hungerLevel;
 		this.thirstLevel = thirstLevel;
+		this.pottyLevel = pottyLevel;
 	}
 
 	public Organic(String petName, String petDescription) {
@@ -59,5 +61,6 @@ public abstract class Organic extends VirtualPet {
 		boredomLevel += 1;
 		thirstLevel += 1;
 		hungerLevel += 1;
+		pottyLevel += 1;
 	}
 }
