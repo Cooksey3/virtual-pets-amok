@@ -29,4 +29,8 @@ public class Dog extends Organic implements Walkable {
 		return cageCleanliness;
 	}
 
+	public void cleanCage() {
+		pottyLevel = 0;
+	}
+
 }
