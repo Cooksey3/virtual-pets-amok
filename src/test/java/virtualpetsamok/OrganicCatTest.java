@@ -11,7 +11,7 @@ public class OrganicCatTest {
 	private static final String PET_DESCRIPTION = "is a cat";
 	private static final String PET_HAPPINESS = "Very happy.";
 
-	Organic underTest = new Cat(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 0, PET_HAPPINESS);
+	Organic underTest = new Cat(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 0, PET_HAPPINESS, 0);
 
 	@Test
 	public void feedPetShouldDecreaseHungerLevel() {
@@ -66,7 +66,7 @@ public class OrganicCatTest {
 
 	@Test
 	public void happinessLevelChangeWithOtherLevelsBad() {
-		Cat underTest = new Cat(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS);
+		Cat underTest = new Cat(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS, 0);
 		String happinessLevel = underTest.getHappinessLevel();
 		assertThat(happinessLevel, is("Very unhappy."));
 	}
@@ -78,4 +78,11 @@ public class OrganicCatTest {
 		assertThat(petHealth, is(-3));
 	}
 
+	@Test
+	public void tickShouldIncreaseWasteLevel() {
+		Cat underTest = new Cat(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS, 0);
+		underTest.tick();
+		int pottyLevel = underTest.getWasteLevel();
+		assertThat(pottyLevel, is(1));
+	}	
 }

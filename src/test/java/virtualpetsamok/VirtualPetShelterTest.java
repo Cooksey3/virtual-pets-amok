@@ -28,7 +28,7 @@ public class VirtualPetShelterTest {
 	public void setup() {
 		underTest = new VirtualPetShelter();
 
-		newPet = new Cat(PET_NAME, "", 0, 0, 0, 0, "is happy");
+		newPet = new Cat(PET_NAME, "", 0, 0, 0, 0, "is happy", 0);
 		newPet2 = new RobotDog("Chad", "", 0, 0, "", 0);
 
 	}
@@ -39,11 +39,11 @@ public class VirtualPetShelterTest {
 		VirtualPet findPet = underTest.findPet(PET_NAME);
 		assertThat(findPet, is(newPet));
 	}
-	
+
 	@Test
 	public void shouldAddMultiplPetsToShelter() {
 		String anotherPetName = "Chad";
-		Dog newPet2 = new Dog(anotherPetName, "", 0, 0, 0, 0, "is unhappy");
+		Dog newPet2 = new Dog(anotherPetName, "", 0, 0, 0, 0, "is unhappy", 0, anotherPetName);
 
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
@@ -63,26 +63,25 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldFeedAllPets() {
-		Dog newPet2 = new Dog("Chad", "", 0, 0, 0, 0, "is hungry");
+		Dog newPet2 = new Dog("Chad", "", 0, 0, 0, 0, "is hungry", 0, null);
 		RobotDog newPet3 = new RobotDog("Jimmy", "", 0, 0, "is hungry", 0);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.admitPet(newPet2);
 		underTest.feedAllOrganicPets();
 
-		
 		assertThat(newPet.getHunger(), is(-1));
 		assertThat(newPet2.getHunger(), is(-1));
 		assertThat(newPet3.getOil(), is(0));
-		
+
 	}
 
 	@Test
 	public void shouldWaterAllOrganicPets() {
-		Dog newPet2 = new Dog("Chad", "", 0, 0, 0, 0, null);
+		Dog newPet2 = new Dog("Chad", "", 0, 0, 0, 0, null, 0, null);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
-		underTest.waterAllPets();
+		underTest.waterAllOrganicPets();
 
 		assertThat(newPet.getThirst(), is(-1));
 		assertThat(newPet2.getThirst(), is(-1));
@@ -116,18 +115,32 @@ public class VirtualPetShelterTest {
 		assertThat(newPet.getBoredom(), is(1));
 		assertThat(newPet2.getOil(), is(1));
 	}
-	
+
 	@Test
 	public void shouldOilAllRobots() {
-		Dog dog = new Dog("", "", 0, 0, 0, 0, "");
+		Dog dog = new Dog("", "", 0, 0, 0, 0, "", 0, null);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.admitPet(dog);
-		
+
 		underTest.walkAllDogs();
 
 		assertThat(newPet.getHealthLevel(), is(0));
 		assertThat(newPet2.getHealthLevel(), is(2));
 		assertThat(dog.getHealthLevel(), is(2));
 	}
+
+	@Test
+	public void cleanLitterBoxResetsPottyLevel() {
+		underTest.admitPet(newPet);
+
+		underTest.tickAllPets();
+		int pottyLevel = newPet.getWasteLevel();
+		underTest.cleanAllLitterBoxes();
+		int newPottyLevel = newPet.getWasteLevel();
+
+		assertThat(pottyLevel - newPottyLevel, is(1));
+
+	}
+
 }

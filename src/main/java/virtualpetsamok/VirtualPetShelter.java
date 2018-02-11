@@ -32,7 +32,7 @@ public class VirtualPetShelter {
 		}
 	}
 
-	public void waterAllPets() {
+	public void waterAllOrganicPets() {
 		for (VirtualPet pets : shelter.values()) {
 			if (pets instanceof Organic) {
 				((Organic) pets).waterPet();
@@ -74,6 +74,14 @@ public class VirtualPetShelter {
 				((Walkable) pets).walkDog();
 			}
 		}
-		
+
+	}
+
+	public void cleanAllLitterBoxes() {
+		for (VirtualPet pets : shelter.values()) {
+			if (pets instanceof Cat) {
+				((Cat) pets).cleanLitterBoxes();
+			}
+		}
 	}
 }

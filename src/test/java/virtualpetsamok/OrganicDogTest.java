@@ -83,15 +83,15 @@ public class OrganicDogTest {
 	public void walkDogShouldDecreasePottyLevel() {
 		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS, 0, null);
 		underTest.walkDog();
-		int pottyLevel = underTest.getPottyLevel();
+		int pottyLevel = underTest.getWasteLevel();
 		assertThat(pottyLevel, is(-2));
 	}
 
 	@Test
-	public void tickShouldIncreasePottyLevel() {
+	public void tickShouldIncreaseWasteLevel() {
 		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS, 0, "");
 		underTest.tick();
-		int pottyLevel = underTest.getPottyLevel();
+		int pottyLevel = underTest.getWasteLevel();
 		assertThat(pottyLevel, is(1));
 	}
 
@@ -102,14 +102,14 @@ public class OrganicDogTest {
 		String cageCleanliness = underTest.getCageCleanliness();
 		assertThat(cageCleanliness, is("Dirty"));
 	}
-	
+
 	@Test
 	public void cleanCageResetsPottyLevel() {
 		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS, 5, "");
 		underTest.tick();
 		underTest.cleanCage();
-		
-		int pottyLevel = underTest.getPottyLevel();
+
+		int pottyLevel = underTest.getWasteLevel();
 		String cageCleanliness = underTest.getCageCleanliness();
 
 		assertThat(pottyLevel, is(0));
