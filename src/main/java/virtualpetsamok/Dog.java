@@ -12,6 +12,7 @@ public class Dog extends Organic implements Walkable {
 	@Override
 	public void walkDog() {
 		healthLevel += 2;
+		pottyLevel -= 2;
 	}
 
 	public int getPottyLevel() {
