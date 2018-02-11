@@ -22,12 +22,14 @@ public class VirtualPetShelterTest {
 
 	private VirtualPetShelter underTest;
 	private Cat newPet;
+	private RobotDog newPet2;
 
 	@Before
 	public void setup() {
 		underTest = new VirtualPetShelter();
 
 		newPet = new Cat(PET_NAME, "", 0, 0, 0, 0, "is happy");
+		newPet2 = new RobotDog("Chad", "", 0, 0, "", 0);
 
 	}
 
@@ -62,7 +64,7 @@ public class VirtualPetShelterTest {
 	@Test
 	public void shouldFeedAllPets() {
 		Dog newPet2 = new Dog("Chad", "", 0, 0, 0, 0, "is hungry");
-		RobotDog newPet3 = new RobotDog("Jimmy", "", 0, 0, 0, "is hungry");
+		RobotDog newPet3 = new RobotDog("Jimmy", "", 0, 0, "is hungry", 0);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.admitPet(newPet2);
@@ -88,7 +90,6 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldPlayWithAllPets() {
-		RobotDog newPet2 = new RobotDog("Chad", "", 0, 0, 0, "");
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.playWithAllPets();
@@ -99,7 +100,6 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldPlayWithOnePet() {
-		RobotDog newPet2 = new RobotDog("Chad", "", 0, 0, 0, "");
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.playWithOnePet(PET_NAME);
@@ -111,10 +111,23 @@ public class VirtualPetShelterTest {
 	@Test
 	public void shouldTickAllPets() {
 		underTest.admitPet(newPet);
-		RobotDog newPet2 = new RobotDog("Chad", "", 0, 0, 0, "");
 		underTest.admitPet(newPet2);
 		underTest.tickAllPets();
 		assertThat(newPet.getBoredom(), is(1));
 		assertThat(newPet2.getOil(), is(1));
+	}
+	
+	@Test
+	public void shouldOilAllRobots() {
+		Dog dog = new Dog("", "", 0, 0, 0, 0, "");
+		underTest.admitPet(newPet);
+		underTest.admitPet(newPet2);
+		underTest.admitPet(dog);
+		
+		underTest.walkAllDogs();
+
+		assertThat(newPet.getHealthLevel(), is(0));
+		assertThat(newPet2.getHealthLevel(), is(2));
+		assertThat(dog.getHealthLevel(), is(2));
 	}
 }

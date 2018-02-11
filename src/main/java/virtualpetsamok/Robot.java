@@ -4,8 +4,8 @@ public abstract class Robot extends VirtualPet {
 
 	protected int oilLevel;
 
-	public Robot(String petName, String petDescription, int oilLevel, int boredomLevel,
-			int healthLevel, String happinessLevel) {
+	public Robot(String petName, String petDescription, int boredomLevel, int healthLevel, String happinessLevel,
+			int oilLevel) {
 		super(petName, petDescription, boredomLevel, healthLevel, happinessLevel);
 		this.oilLevel = oilLevel;
 	}
@@ -24,10 +24,10 @@ public abstract class Robot extends VirtualPet {
 
 	@Override
 	public int getHealthLevel() {
-		healthLevel = boredomLevel + oilLevel;
+		healthLevel -= (boredomLevel + oilLevel);
 		return healthLevel;
 	}
-	
+
 	@Override
 	public void tick() {
 		oilLevel += 1;

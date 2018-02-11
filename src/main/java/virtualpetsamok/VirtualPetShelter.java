@@ -59,4 +59,21 @@ public class VirtualPetShelter {
 			pets.tick();
 		}
 	}
+
+	public void oilAllRobots() {
+		for (VirtualPet pets : shelter.values()) {
+			if (pets instanceof Robot) {
+				((Robot) pets).oilPet();
+			}
+		}
+	}
+
+	public void walkAllDogs() {
+		for (VirtualPet pets : shelter.values()) {
+			if (pets instanceof Walkable) {
+				((Walkable) pets).walkDog();
+			}
+		}
+		
+	}
 }

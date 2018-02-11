@@ -43,7 +43,7 @@ public class OrganicDogTest {
 		underTest.feedPet();
 		underTest.waterPet();
 		int healthLevelAfter = underTest.getHealthLevel();
-		assertThat(healthLevelBefore - healthLevelAfter, is(2));
+		assertThat(healthLevelBefore - healthLevelAfter, is(-2));
 	}
 
 	@Test
@@ -69,5 +69,23 @@ public class OrganicDogTest {
 		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS);
 		String happinessLevel = underTest.getHappinessLevel();
 		assertThat(happinessLevel, is("Very unhappy."));
+	}
+	
+	@Test
+	public void walkDogShouldIncreaseHealth() {
+		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS);
+		underTest.walkDog();
+		int healthLevel = underTest.getHealthLevel();
+		assertThat(healthLevel, is(17));
+	}
+	
+	@Test
+	public void walkDogShouldDecreasePottyLevel() {
+		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS);
+		underTest.walkDog();
+		int pottyLevel = underTest.getPottyLevel();
+		assertThat(pottyLevel, is(-2));
+		
+		
 	}
 }

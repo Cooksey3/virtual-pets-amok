@@ -11,7 +11,7 @@ public class RobotDogTest {
 	private static final String PET_DESCRIPTION = "is a robot dog";
 	private static final String PET_HAPPINESS = "Very happy.";
 
-	Robot underTest = new RobotDog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, PET_HAPPINESS);
+	Robot underTest = new RobotDog(PET_NAME, PET_DESCRIPTION, 0, 0, PET_HAPPINESS, 0);
 
 	@Test
 	public void oilPetShouldDecreaseOilLevel() {
@@ -33,7 +33,7 @@ public class RobotDogTest {
 		int healthLevelBefore = underTest.getHealthLevel();
 		underTest.oilPet();
 		int healthLevelAfter = underTest.getHealthLevel();
-		assertThat(healthLevelBefore - healthLevelAfter, is(1));
+		assertThat(healthLevelBefore - healthLevelAfter, is(-1));
 	}
 
 	@Test
@@ -56,8 +56,16 @@ public class RobotDogTest {
 
 	@Test
 	public void happinessLevelChangeWithOtherLevelsBad() {
-		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS);
+		RobotDog underTest = new RobotDog(PET_NAME, PET_DESCRIPTION, 0, 15, PET_HAPPINESS, 0);
 		String happinessLevel = underTest.getHappinessLevel();
 		assertThat(happinessLevel, is("Very unhappy."));
+	}
+	
+	@Test
+	public void walkingShouldIncreaseHealthLevel() {
+		RobotDog underTest = new RobotDog(PET_NAME, PET_DESCRIPTION, 0, 15, PET_HAPPINESS, 0);
+		underTest.walkDog();
+		int healthLevel = underTest.getHealthLevel();
+		assertThat(healthLevel, is(17));
 	}
 }
