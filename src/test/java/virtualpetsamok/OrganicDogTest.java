@@ -96,8 +96,10 @@ public class OrganicDogTest {
 	}
 
 	@Test
-	public void cageIsSoiledIfPottyLevelIsGreaterThanFive() {
-		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS, 0);
+	public void cageIsSoiledIfPottyLevelIsGreaterThanFour() {
+		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS, 4);
 		underTest.tick();
+		String cageCleanliness = underTest.getCageCleanliness();
+		assertThat(cageCleanliness, is("Dirty"));
 	}
 }
