@@ -27,11 +27,11 @@ public abstract class Organic extends VirtualPet {
 	}
 
 	public void feedPet() {
-		hungerLevel -= 1;
+		hungerLevel -= 3;
 	}
 
 	public void waterPet() {
-		thirstLevel -= 1;
+		thirstLevel -= 3;
 	}
 
 	public int getBoredom() {
@@ -39,7 +39,7 @@ public abstract class Organic extends VirtualPet {
 	}
 
 	public void playWithPet() {
-		boredomLevel -= 1;
+		boredomLevel -= 3;
 	}
 
 	@Override

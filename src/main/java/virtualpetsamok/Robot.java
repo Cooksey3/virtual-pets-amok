@@ -29,6 +29,16 @@ public abstract class Robot extends VirtualPet {
 	}
 
 	@Override
+	public String getHappinessLevel() {
+		if (healthLevel > 15) {
+			happinessLevel = "Happy";
+		} else {
+			happinessLevel = "Mad";
+		}
+		return happinessLevel;
+	}
+
+	@Override
 	public void tick() {
 		oilLevel += 1;
 		boredomLevel += 1;

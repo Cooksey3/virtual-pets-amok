@@ -3,17 +3,12 @@ package virtualpetsamok;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import virtualpetsamok.VirtualPet;
-import virtualpetsamok.VirtualPetShelter;
 
 public class VirtualPetShelterTest {
 
@@ -28,8 +23,8 @@ public class VirtualPetShelterTest {
 	public void setup() {
 		underTest = new VirtualPetShelter();
 
-		newPet = new Cat(PET_NAME, "", 0, 0, 0, 0, "is happy", 0);
-		newPet2 = new RobotDog("Chad", "", 0, 0, "", 0);
+		newPet = new Cat(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 0, "is happy", 0);
+		newPet2 = new RobotDog("Chad", "", 0, 0, "", 0, null);
 
 	}
 
@@ -64,7 +59,7 @@ public class VirtualPetShelterTest {
 	@Test
 	public void shouldFeedAllPets() {
 		Dog newPet2 = new Dog("Chad", "", 0, 0, 0, 0, "is hungry", 0, null);
-		RobotDog newPet3 = new RobotDog("Jimmy", "", 0, 0, "is hungry", 0);
+		RobotDog newPet3 = new RobotDog("Jimmy", "", 0, 0, "is hungry", 0, null);
 		underTest.admitPet(newPet);
 		underTest.admitPet(newPet2);
 		underTest.admitPet(newPet2);

@@ -66,7 +66,7 @@ public class VirtualPetShelterApp {
 		System.out.println("Here are your pets' current vitals: ");
 
 		answer = "";
-		while (!(answer.equals("9"))) {
+		while (!(answer.equals("0"))) {
 
 			System.out.println();
 			System.out.println("Name\t|Hunger\t|Thirst\t|Oil\t|Boredom|Health\t|Happy\t|Waste\t|Cage\t|");
@@ -85,7 +85,9 @@ public class VirtualPetShelterApp {
 			System.out.println("6. Walk the dogs");
 			System.out.println("7. Adopt a pet");
 			System.out.println("8. Admit a pet");
-			System.out.println("9. Go home");
+			System.out.println("9. Clean dog cages");
+			System.out.println("10. Empty litter box");
+			System.out.println("0. Go home");
 			answer = input.nextLine();
 
 			if (answer.equals("1")) {
@@ -153,7 +155,15 @@ public class VirtualPetShelterApp {
 					System.out.println("Please try again.");
 				}
 				System.out.println("Thank you for admitting " + petName);
-			} else if (!answer.equals("9")) {
+			} else if (answer.equals("9")) {
+				System.out.println("You cleaned the dog cages!");
+				System.out.println("The dogs love you!");
+				pets.cleanDogCages();
+			} else if (answer.equals("10")) {
+				System.out.println("You emptied the litter box!");
+				System.out.println("The cats love you!");
+				pets.cleanLitterBox();
+			} else if (!answer.equals("0")) {
 				System.out.println("You are waiting too long.");
 				System.out.println("Please do something:");
 			}

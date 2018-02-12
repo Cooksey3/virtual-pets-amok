@@ -16,7 +16,7 @@ public class Dog extends Organic implements Walkable {
 
 	@Override
 	public void walkDog() {
-		wasteLevel -= 2;
+		wasteLevel -= 3;
 	}
 
 	public int getWasteLevel() {
@@ -34,7 +34,7 @@ public class Dog extends Organic implements Walkable {
 
 	public void cleanCage() {
 		wasteLevel = 0;
-		healthLevel += 2;
+		healthLevel += 6;
 	}
 
 	@Override

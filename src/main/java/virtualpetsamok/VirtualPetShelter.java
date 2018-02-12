@@ -86,6 +86,14 @@ public class VirtualPetShelter {
 		}
 	}
 
+	public void cleanDogCages() {
+		for (VirtualPet pets : shelter.values()) {
+			if (pets instanceof Dog) {
+				((Dog) pets).cleanCage();
+			}
+		}
+	}
+	
 	public String getLitterBoxStatus() {
 		for (VirtualPet pets : shelter.values()) {
 			if (((Cat) pets).getWasteLevel() > 0) {
