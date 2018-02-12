@@ -131,16 +131,28 @@ public class VirtualPetShelterTest {
 	}
 
 	@Test
-	public void cleanLitterBoxResetsPottyLevel() {
+	public void virtualPetShelterShouldHaveLitterBoxVariable() {
+		//What I want is a loop that goes through all the cats, adds up the waste level, and then changes the string based on the waste level
 		underTest.admitPet(newPet);
-
-		underTest.tickAllPets();
-		int pottyLevel = newPet.getWasteLevel();
-		underTest.cleanAllLitterBoxes();
-		int newPottyLevel = newPet.getWasteLevel();
-
-		assertThat(pottyLevel - newPottyLevel, is(1));
-
+		
+		String litterBoxStatus = underTest.getLitterBoxStatus();
+		
+		assertThat(litterBoxStatus, is("Clean"));
 	}
+	
+	
+
+//	@Test
+//	public void cleanLitterBoxResetsPottyLevel() {
+//		underTest.admitPet(newPet);
+//
+//		underTest.tickAllPets();
+//		int pottyLevel = newPet.getWasteLevel();
+//		underTest.cleanAllLitterBoxes();
+//		int newPottyLevel = newPet.getWasteLevel();
+//
+//		assertThat(pottyLevel - newPottyLevel, is(1));
+//
+//	}
 
 }

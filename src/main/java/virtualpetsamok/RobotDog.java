@@ -1,8 +1,9 @@
 package virtualpetsamok;
 
 public class RobotDog extends Robot implements Walkable {
-	
-	public RobotDog(String petName, String petDescription, int boredomLevel, int healthLevel, String happinessLevel, int oilLevel) {
+
+	public RobotDog(String petName, String petDescription, int boredomLevel, int healthLevel, String happinessLevel,
+			int oilLevel) {
 		super(petName, petDescription, boredomLevel, healthLevel, happinessLevel, oilLevel);
 	}
 

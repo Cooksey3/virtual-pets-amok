@@ -84,4 +84,8 @@ public class VirtualPetShelter {
 			}
 		}
 	}
+
+	public String getLitterBoxStatus() {
+		return "Clean";
+	}
 }

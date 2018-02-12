@@ -60,5 +60,4 @@ public class RobotCatTest {
 			String happinessLevel = underTest.getHappinessLevel();
 			assertThat(happinessLevel, is("Very unhappy."));
 		}
-
 }
