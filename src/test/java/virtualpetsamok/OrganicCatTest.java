@@ -75,7 +75,7 @@ public class OrganicCatTest {
 	public void tickIncreasesAllLevels() {
 		underTest.tick();
 		int petHealth = underTest.getHealthLevel();
-		assertThat(petHealth, is(-3));
+		assertThat(petHealth, is(27));
 	}
 
 	@Test

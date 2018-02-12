@@ -6,7 +6,7 @@ public abstract class VirtualPet {
 	protected String petName;
 	protected int boredomLevel;
 	protected String happinessLevel;
-	protected int healthLevel = 30;
+	protected int healthLevel;
 
 	public VirtualPet(String petName, String petDescription, int boredomLevel, int healthLevel, String happinessLevel) {
 		this.petDescription = petDescription;
@@ -43,11 +43,6 @@ public abstract class VirtualPet {
 	}
 
 	public String getHappinessLevel() {
-		if (healthLevel < 15) {
-			happinessLevel = "Very happy.";
-		} else {
-			happinessLevel = "Very unhappy.";
-		}
 		return happinessLevel;
 	}
 

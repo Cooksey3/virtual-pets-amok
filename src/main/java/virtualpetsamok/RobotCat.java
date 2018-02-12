@@ -11,4 +11,9 @@ public class RobotCat extends Robot {
 		super(petName, petDescription);
 	}
 
+	@Override
+	public String toString() {
+		return petName + "\t|\t|\t|" + oilLevel + "\t|" + boredomLevel + "\t|" + getHealthLevel() + "\t|"
+				+ getHappinessLevel() + "\t|\t|\t|";
+	}
 }

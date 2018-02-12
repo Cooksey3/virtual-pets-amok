@@ -7,6 +7,7 @@ import java.util.Map;
 public class VirtualPetShelter {
 
 	private Map<String, VirtualPet> shelter = new HashMap<>();
+	private String litterBoxStatus;
 
 	public Collection<VirtualPet> petList() {
 		return shelter.values();
@@ -77,7 +78,7 @@ public class VirtualPetShelter {
 
 	}
 
-	public void cleanAllLitterBoxes() {
+	public void cleanLitterBox() {
 		for (VirtualPet pets : shelter.values()) {
 			if (pets instanceof Cat) {
 				((Cat) pets).cleanLitterBoxes();
@@ -86,6 +87,13 @@ public class VirtualPetShelter {
 	}
 
 	public String getLitterBoxStatus() {
-		return "Clean";
+		for (VirtualPet pets : shelter.values()) {
+			if (((Cat) pets).getWasteLevel() > 0) {
+				litterBoxStatus = "Dirty";
+			} else {
+				litterBoxStatus = "Clean";
+			}
+		}
+		return litterBoxStatus;
 	}
 }

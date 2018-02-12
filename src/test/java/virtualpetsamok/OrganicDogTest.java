@@ -66,22 +66,22 @@ public class OrganicDogTest {
 
 	@Test
 	public void happinessLevelChangeWithOtherLevelsBad() {
-		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS, 0, null);
+		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS, 0, "");
 		String happinessLevel = underTest.getHappinessLevel();
 		assertThat(happinessLevel, is("Very unhappy."));
 	}
 
 	@Test
 	public void walkDogShouldIncreaseHealth() {
-		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS, 0, null);
+		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 0, PET_HAPPINESS, 0, null);
 		underTest.walkDog();
 		int healthLevel = underTest.getHealthLevel();
-		assertThat(healthLevel, is(17));
+		assertThat(healthLevel, is(32));
 	}
 
 	@Test
 	public void walkDogShouldDecreasePottyLevel() {
-		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 15, PET_HAPPINESS, 0, null);
+		Dog underTest = new Dog(PET_NAME, PET_DESCRIPTION, 0, 0, 0, 0, PET_HAPPINESS, 0, null);
 		underTest.walkDog();
 		int pottyLevel = underTest.getWasteLevel();
 		assertThat(pottyLevel, is(-2));

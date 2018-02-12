@@ -10,9 +10,12 @@ public class Dog extends Organic implements Walkable {
 		this.cageCleanliness = cageCleanliness;
 	}
 
+	public Dog(String petName, String petDescription) {
+		super(petName, petDescription);
+	}
+
 	@Override
 	public void walkDog() {
-		healthLevel += 2;
 		wasteLevel -= 2;
 	}
 
@@ -21,10 +24,10 @@ public class Dog extends Organic implements Walkable {
 	}
 
 	public String getCageCleanliness() {
-		if (wasteLevel > 4) {
-			cageCleanliness = "Dirty";
-		} else {
+		if (wasteLevel < 5) {
 			cageCleanliness = "Clean";
+		} else {
+			cageCleanliness = "Dirty";
 		}
 		return cageCleanliness;
 	}
@@ -34,4 +37,9 @@ public class Dog extends Organic implements Walkable {
 		healthLevel += 2;
 	}
 
+	@Override
+	public String toString() {
+		return petName + "\t|" + hungerLevel + "\t|" + thirstLevel + "\t|\t|" + boredomLevel + "\t|" + getHealthLevel()
+				+ "\t|" + getHappinessLevel() + "\t|" + wasteLevel + "\t|" + getCageCleanliness() + "\t|";
+	}
 }

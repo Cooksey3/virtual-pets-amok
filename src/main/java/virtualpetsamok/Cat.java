@@ -18,4 +18,10 @@ public class Cat extends Organic {
 	public void cleanLitterBoxes() {
 		wasteLevel = 0;
 	}
+
+	@Override
+	public String toString() {
+		return petName + "\t|" + hungerLevel + "\t|" + thirstLevel + "\t|\t|" + boredomLevel + "\t|" + getHealthLevel()
+				+ "\t|" + getHappinessLevel() + "\t|" + wasteLevel + "\t|\t|";
+	}
 }

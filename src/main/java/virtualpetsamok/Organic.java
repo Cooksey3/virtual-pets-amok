@@ -44,8 +44,18 @@ public abstract class Organic extends VirtualPet {
 
 	@Override
 	public int getHealthLevel() {
-		healthLevel -= (boredomLevel + thirstLevel + hungerLevel);
+		healthLevel = 30 - (boredomLevel + thirstLevel + hungerLevel + wasteLevel);
 		return healthLevel;
+	}
+
+	@Override
+	public String getHappinessLevel() {
+		if (healthLevel > 15) {
+			happinessLevel = "Happy";
+		} else {
+			happinessLevel = "Mad";
+		}
+		return happinessLevel;
 	}
 
 	public String getName() {

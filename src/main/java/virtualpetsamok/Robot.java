@@ -24,7 +24,7 @@ public abstract class Robot extends VirtualPet {
 
 	@Override
 	public int getHealthLevel() {
-		healthLevel -= (boredomLevel + oilLevel);
+		healthLevel = 30 - (boredomLevel + oilLevel);
 		return healthLevel;
 	}
 
