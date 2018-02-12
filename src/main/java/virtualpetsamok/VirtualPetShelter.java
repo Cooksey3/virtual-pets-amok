@@ -93,7 +93,7 @@ public class VirtualPetShelter {
 			}
 		}
 	}
-	
+
 	public String getLitterBoxStatus() {
 		for (VirtualPet pets : shelter.values()) {
 			if (((Cat) pets).getWasteLevel() > 0) {

@@ -70,7 +70,7 @@ public class OrganicCatTest {
 		String happinessLevel = underTest.getHappinessLevel();
 		assertThat(happinessLevel, is("Very unhappy."));
 	}
-	
+
 	@Test
 	public void tickIncreasesAllLevels() {
 		underTest.tick();
@@ -84,5 +84,5 @@ public class OrganicCatTest {
 		underTest.tick();
 		int pottyLevel = underTest.getWasteLevel();
 		assertThat(pottyLevel, is(1));
-	}	
+	}
 }

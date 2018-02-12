@@ -60,7 +60,7 @@ public class RobotDogTest {
 		String happinessLevel = underTest.getHappinessLevel();
 		assertThat(happinessLevel, is("Very unhappy."));
 	}
-	
+
 	@Test
 	public void walkingShouldIncreaseHealthLevel() {
 		RobotDog underTest = new RobotDog(PET_NAME, PET_DESCRIPTION, 0, 15, PET_HAPPINESS, 0, null);

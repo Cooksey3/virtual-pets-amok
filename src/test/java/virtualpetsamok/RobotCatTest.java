@@ -56,7 +56,7 @@ public class RobotCatTest {
 
 		@Test
 		public void happinessLevelChangeWithOtherLevelsBad() {
-			RobotDog underTest = new RobotDog(PET_NAME, PET_DESCRIPTION, 0, 15, PET_HAPPINESS, 0, null);
+		RobotDog underTest = new RobotDog(PET_NAME, PET_DESCRIPTION, 0, 15, PET_HAPPINESS, 0, null);
 			String happinessLevel = underTest.getHappinessLevel();
 			assertThat(happinessLevel, is("Very unhappy."));
 		}

@@ -35,7 +35,7 @@ public abstract class VirtualPet {
 	}
 
 	public void playWithPet() {
-		boredomLevel -= 1;
+		boredomLevel -= 3;
 	}
 
 	public void tick() {
